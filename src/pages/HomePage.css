@@ -30,13 +30,13 @@ section.section {
     min-height: 100vh;
 }
 
-.overlay {
+.overlay-home {
     position: absolute;
     background: rgba(57, 57, 57, 0.3);
     top: 70px;
     right: 0;
     left: 0;
-    bottom: 165px;
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,7 +44,7 @@ section.section {
 
 .welcome img.header-image {
     margin-top: 70px;
-    height: 70vh;
+    height: 91.55vh;
     object-fit: cover;
     width: 100vw;
 }
@@ -60,13 +60,13 @@ section.section {
     width: auto;
 } */
 
-.welcome img.schoolr-image {
+/* .welcome img.schoolr-image {
     width: 40vw;
     padding: 15px 0px 150px 0px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
 /* Slider */
 
