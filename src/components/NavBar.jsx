@@ -14,7 +14,7 @@ function NavBar() {
         <div>
             <div>
                 <header className="header">
-                    <Link to="/" className="logo"><img src="../../public/logo2.png" alt="" /></Link>
+                    <Link to="/" className="logo"><img src="../../schoolr1.png" alt="" /></Link>
                     <div className="menu-btn">
                         <div className="menu-burger"></div>
                     </div>
