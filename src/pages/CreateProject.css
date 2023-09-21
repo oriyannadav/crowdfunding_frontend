@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --main-color: #800000;
+    --second-main-color: #B41818;
+    --dark-blue: #2f7382;
+    --grey: #ababab;
+    --green: #72C07F;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+.project-section {
+    margin: 125px 200px;
+}
+
+.project-section h1 {
+    font-family: 'Yeseva One', cursive;
+    font-size: 5rem;
+    padding-bottom: 40px;
+}
+
+.project-section h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 20px 0px 15px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.project-section img {
+    height: 60vh;
+    object-fit: cover;
+    width: 49vw;
+    border-radius: 15px;
+}
+
+p.project-description {
+    padding: 30px 0px;
+    font-size: 1.8rem;
+    margin-right: 400px;
+}
+
+.project-container {
+	background-color: rgba(0, 0, 0, 0.09);
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: absolute;
+	width: 360px;
+	max-width: 100%;
+	min-height: 750px;
+    right: 200px;
+    top: 223px;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+.progress-bar {
+    width: 80%;
+    height: 7px;
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background-color: var(--main-color);
+    border-radius: 4px;
+    transition: width 0.3s;
+}
+
+.data-container {
+    padding: 30px 40px;
+}
+
+.data-container h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 5px 0px;
+}
+
+.pledge-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pledge-section h3 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    padding: 5px 0px;
+}
+
+.project-section button {
+	border-radius: 20px;
+	border: 1px solid var(--second-main-color);
+	background-color: var(--second-main-color);
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	margin: 20px 98px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+    cursor: pointer;
+}
+
+.pledge-section form {
+    padding-left: 15px;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+.project-section input {
+    width: 100%;
+	background-color: #ccc;
+	border: none;
+    border-radius: 5px;
+	padding: 14px 12px;
+	margin: 8px 0;
+}
+
+.project-section input::placeholder {
+    color: #ffffff;
+}
+
+.pledge-input-container {
+    padding: 10px 85px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pledge-input-container-anonymous {
+    padding: 10px 85px;
+}
+
+.pledge-input-container #anonymous {
+    width: 10px;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+}
