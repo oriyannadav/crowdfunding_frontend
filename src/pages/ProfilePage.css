@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --main-color: #800000;
+    --second-main-color: #B41818;
+    --dark-blue: #2f7382;
+    --grey: #ababab;
+    --green: #72C07F;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+.profile-page {
+    margin: 125px 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-page h1 {
+    font-family: 'Yeseva One', cursive;
+    font-size: 5.5rem;
+    position: absolute;
+}
+
+.profile-section {
+	background-color: rgba(142, 103, 103, 0.175);
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	width: 110vh;
+	min-height: 50vh;
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-projects {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.profile-heading {
+    padding: 20px 0px 10px 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.second-heading {
+    padding-top: 50px;
+}
+
+.profile-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.profile-icon {
+    width: 75px;
+    margin: 85px 70px;
+}
+
+.profile-data {
+    margin: 50px 0px;
+    padding-top: 25px;
+    padding: 25px 70px 0px 0px;
+}
+
+.profile-data h3 {
+    font-size: 2rem;
+    color: rgba(129, 0, 0, 0.7);
+    font-weight: 400;
+    padding-bottom: 10px;
+}
+
+.profile-data p {
+    font-size: 2.5rem;
+    padding-bottom: 20px;
+}
