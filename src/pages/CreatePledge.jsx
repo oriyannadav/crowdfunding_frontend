@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import postPledge from '../../api/postPledge'
+
+import postPledge from '../api/postPledge';
 
 function CreatePledge(props) {
     const navigate = useNavigate()
@@ -44,34 +45,36 @@ function CreatePledge(props) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-        <div>
-            <label htmlFor="amount">Amount</label>
-            <input 
-            type="text" 
-            id="amount" 
-            placeholder='Enter the amount' 
-            onChange={handleChange} 
-            />
-        </div>
-        <div>
-            <label htmlFor="comment">Comment</label>
-            <input 
-            type="text" 
-            id="comment" 
-            placeholder='Enter a comment' 
-            onChange={handleChange} 
-            />
-        </div>
-        <div>
-            <label htmlFor='anonymous'>Anonymous Pledge</label>
-            <input
-            type='checkbox'
-            id='anonymous'
-            onChange={handleChecked}
-            />
-        </div>
-        <input type="submit" value="Pledge" />
+        <form onSubmit={handleSubmit} className='form'>
+            <div className="pledge-input-container">
+                <label htmlFor="amount">Amount</label>
+                <input 
+                type="text" 
+                id="amount" 
+                placeholder='Enter the amount'
+                onChange={handleChange}
+                />
+            </div>
+            <div className="pledge-input-container">
+                <label htmlFor="comment">Comment</label>
+                <input 
+                type="text" 
+                id="comment" 
+                placeholder='Enter a comment'
+                onChange={handleChange} 
+                />
+            </div>
+            <div className="pledge-input-container-anonymous">
+                <label htmlFor='anonymous'>Anonymous Pledge</label>
+                <input
+                type='checkbox'
+                id='anonymous'
+                onChange={handleChecked}
+                />
+            </div>
+            <button type="submit" value="Pledge">
+                Pledge
+            </button>
         </form>
     )
 }

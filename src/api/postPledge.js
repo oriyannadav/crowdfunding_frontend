@@ -1,17 +1,19 @@
-async function postPledge(pledgeData) {
+async function postPledge(amount, comment, anonymous) {
 
-    const url =`${import.meta.env.VITE_API_URL}/api-token-auth/`;
+    const url =`${import.meta.env.VITE_API_URL}/pledges/`;
     const response = await fetch(url, {
         method: "POST",
-        // We need to tell the server that we are sending JSON dataso we set the Content-Type header to application/json
         headers: {
             "Content-Type":"application/json",
         },
-        body: JSON.stringify(pledgeData),
+        body: JSON.stringify({
+            "amount": amount,
+            "comment": comment,
+            "anonymous": anonymous,
+        }),
     });
     
     if (!response.ok) {
-        
         const fallbackError =`Error trying to pledge`;
         const data = await response.json().catch(() =>{
             throw new Error(fallbackError);
