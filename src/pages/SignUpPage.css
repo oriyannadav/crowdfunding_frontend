@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --main-color: #800000;
+    --second-main-color: #B41818;
+    --dark-blue: #2f7382;
+    --grey: #ababab;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+section.signup-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    margin-top: 60px;
+}
+
+.signup-form h1 {
+	font-weight: bold;
+	margin: 0;
+	padding: 30px 0px;
+	font-size: 3rem;
+	font-family: 'Yeseva One', cursive;
+}
+
+span {
+	font-size: 14px;
+	padding-bottom: 30px;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid var(--second-main-color);
+	background-color: var(--second-main-color);
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	margin-top: 20px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+.signup-form {
+	background-color: var(--bg-color);
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+.form label {
+	font-size: 1.4rem;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form input {
+	background-color: #eee;
+	border: none;
+	padding: 14px 35px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.container {
+	margin-top: 100px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 860px;
+	max-width: 100%;
+	min-height: 550px;
+}
+
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+}
+
+.inline-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.input-container {
+    padding: 10px 20px;
+}
