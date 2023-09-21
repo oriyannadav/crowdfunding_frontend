@@ -19,6 +19,7 @@
     --second-main-color: #B41818;
     --dark-blue: #2f7382;
     --grey: #ababab;
+    --green: #15ff005b;
 }
 
 html {
@@ -44,35 +45,80 @@ section.section {
 
 .welcome img.header-image {
     margin-top: 70px;
-    height: 91.55vh;
+    height: 90.7vh;
     object-fit: cover;
     width: 100vw;
 }
-
-/* .welcome h2 {
-    font-size: 10rem;
-    padding-top: 50px;
-    font-family: 'Yeseva One', cursive;
-} */
-
-/* .welcome h2 img {
-    height: 10rem;
-    width: auto;
-} */
-
-/* .welcome img.schoolr-image {
-    width: 40vw;
-    padding: 15px 0px 150px 0px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-} */
-
-/* Slider */
 
 #project-list {
     display: grid;
     grid-template-columns: 30% 30% 30%;
     column-gap: 10px;
     row-gap: 10px;
+}
+
+.swiper-projects {
+    padding: 70px 0px;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--green);
+    fill: none;
+    stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+}
+
+.mySwiper {
+    color: var(--green);
 }
