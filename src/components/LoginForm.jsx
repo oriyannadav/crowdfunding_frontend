@@ -2,17 +2,29 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import postLogin from "../api/post-login.js";
+import useUsers from "../hooks/use-users.js";
 import useAuth from "../hooks/use-auth.js";
 
 function LoginForm() {
 
     const navigate = useNavigate();
-    const {setAuth} = useAuth();
+    const { setAuth } = useAuth();
+    const { users, isLoading, error } = useUsers();
 
     const [credentials, setCredentials] = useState({
         username: "",
         password: "",
     });
+
+    let userId = "";
+
+    if (isLoading) {
+        return (<p>loading...</p>)
+    }
+    
+    if (error) {
+        return (<p>Error is: {error.message}</p>)
+    }
 
     const handleChange = (event) => {
         const { id, value } = event.target;
@@ -30,8 +42,11 @@ function LoginForm() {
                 credentials.password
             ).then((response) => {
                 window.localStorage.setItem("token", response.token);
+                userId = users.find((user) => user.username == credentials.username).id;
+                window.localStorage.setItem("id:", userId);
                 setAuth({
                     token: response.token,
+                    id: userId,
                 });
                 navigate("/");
             });
