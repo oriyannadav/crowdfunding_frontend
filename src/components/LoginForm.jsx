@@ -43,7 +43,7 @@ function LoginForm() {
             ).then((response) => {
                 window.localStorage.setItem("token", response.token);
                 userId = users.find((user) => user.username == credentials.username).id;
-                window.localStorage.setItem("id:", userId);
+                window.localStorage.setItem("id", userId);
                 setAuth({
                     token: response.token,
                     id: userId,
