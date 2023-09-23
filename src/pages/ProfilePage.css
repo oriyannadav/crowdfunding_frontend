@@ -37,20 +37,21 @@ html {
 .profile-page h1 {
     font-family: 'Yeseva One', cursive;
     font-size: 5.5rem;
-    position: absolute;
+    /* position: absolute; */
 }
 
 .profile-section {
-	background-color: rgba(142, 103, 103, 0.175);
+	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
 			0 10px 10px rgba(0,0,0,0.22);
 	width: 110vh;
-	min-height: 50vh;
+	min-height: 60vh;
     margin: 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-direction: column;
 }
 
 .profile-projects {
@@ -62,8 +63,12 @@ html {
 .profile-heading {
     padding: 20px 0px 10px 0px;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
     align-items: center;
+}
+
+.icon {
+    display: flex;
 }
 
 .second-heading {
@@ -75,15 +80,26 @@ html {
     align-items: flex-start;
 }
 
+.projects-container{
+    display: flex;
+    align-content: space-around;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
 .profile-icon {
     width: 75px;
-    margin: 85px 70px;
+    margin-right: 50px;
 }
 
 .profile-data {
-    margin: 50px 0px;
-    padding-top: 25px;
-    padding: 25px 70px 0px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-data-second {
+    margin-left: 70px;
 }
 
 .profile-data h3 {
@@ -96,4 +112,12 @@ html {
 .profile-data p {
     font-size: 2.5rem;
     padding-bottom: 20px;
+}
+
+.project-card-profile {
+    padding: 30px;
+}
+
+.project-card {
+    text-align: center;
 }
