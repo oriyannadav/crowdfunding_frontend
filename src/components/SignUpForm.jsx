@@ -39,7 +39,7 @@ function SignUpForm() {
                 setAuth({
                     token: response.token,
                 });
-                navigate("/");
+                navigate("/login");
             });
         }
     };
