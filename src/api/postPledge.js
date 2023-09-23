@@ -1,15 +1,17 @@
-async function postPledge(amount, comment, anonymous) {
+async function postPledge(pledgeData) {
 
     const url =`${import.meta.env.VITE_API_URL}/pledges/`;
     const response = await fetch(url, {
         method: "POST",
         headers: {
             "Content-Type":"application/json",
+            "authorization": `Token ${window.localStorage.getItem('token')}`
         },
         body: JSON.stringify({
-            "amount": amount,
-            "comment": comment,
-            "anonymous": anonymous,
+            "project": pledgeData.project,
+            "amount": pledgeData.amount,
+            "comment": pledgeData.comment,
+            "anonymous": pledgeData.anonymous,
         }),
     });
     

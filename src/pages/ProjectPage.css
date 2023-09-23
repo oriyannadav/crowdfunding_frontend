@@ -34,15 +34,21 @@ html {
 .project-section h1 {
     font-family: 'Yeseva One', cursive;
     font-size: 5rem;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 
-.project-section h2 {
+.project-container h2 {
     font-size: 2rem;
     font-weight: 400;
     padding: 20px 0px 15px 0px;
     display: flex;
     justify-content: center;
+}
+
+.project-section h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    padding-bottom: 20px;
 }
 
 .project-section img {
@@ -52,10 +58,24 @@ html {
     border-radius: 15px;
 }
 
+.project-progress-bar {
+    padding: 20px 0px;
+}
+
+.project-section ul {
+    list-style: none;
+}
+
+.project-description-container {
+    /* Existing styles for the project container */
+    display: flex;
+    flex-direction: column;
+    width: 66%; /* Make the description span the same width as the image */
+}
+
 p.project-description {
     padding: 30px 0px;
     font-size: 1.8rem;
-    margin-right: 400px;
 }
 
 .project-container {
@@ -66,9 +86,10 @@ p.project-description {
 	position: absolute;
 	width: 360px;
 	max-width: 100%;
-	min-height: 750px;
-    right: 200px;
-    top: 223px;
+	min-height: 555px;
+    right: 0;
+    top: 0;
+    margin: 248px 200px 0px 0px;
 }
 
 .progress-container {
@@ -94,13 +115,26 @@ p.project-description {
 }
 
 .data-container {
-    padding: 30px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 17%;
 }
 
 .data-container h3 {
     font-size: 2rem;
     font-weight: 400;
     padding: 5px 0px;
+}
+
+.data-container-pledges {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-container-pledges p {
+    font-size: 1.6rem;
+    padding: 9px 0px;
 }
 
 .pledge-section {
@@ -112,7 +146,7 @@ p.project-description {
 .pledge-section h3 {
     font-size: 2.5rem;
     font-weight: 300;
-    padding: 5px 0px;
+    padding: 20px 0px;
 }
 
 .project-section button {
@@ -120,18 +154,18 @@ p.project-description {
 	border: 1px solid var(--second-main-color);
 	background-color: var(--second-main-color);
 	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
+	font-size: 1.5rem;
 	padding: 12px 45px;
 	margin: 20px 98px;
 	letter-spacing: 1px;
-	text-transform: uppercase;
 	transition: transform 80ms ease-in;
     cursor: pointer;
 }
 
 .pledge-section form {
-    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 button:active {
@@ -139,7 +173,6 @@ button:active {
 }
 
 .project-section input {
-    width: 100%;
 	background-color: #ccc;
 	border: none;
     border-radius: 5px;
@@ -147,23 +180,15 @@ button:active {
 	margin: 8px 0;
 }
 
-.project-section input::placeholder {
-    color: #ffffff;
-}
-
 .pledge-input-container {
-    padding: 10px 85px;
     display: flex;
     flex-direction: column;
+    width: 200px;
+    padding: 5px 0px;
 }
 
 .pledge-input-container-anonymous {
-    padding: 10px 85px;
-}
-
-.pledge-input-container #anonymous {
-    width: 10px;
-    padding: 10px 5px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
 }

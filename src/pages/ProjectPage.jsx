@@ -1,14 +1,20 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+
 import useProject from "../hooks/use-project";
+import useAuth from "../hooks/use-auth";
+
+import deleteProject from "../api/delete-project";
+
 import CreatePledge from "./CreatePledge.jsx";
 // import ProjectComments from "../components/Comments";
 import "./ProjectPage.css";
 
 function ProjectPage() {
-    // Here we use a hook that comes for free in react router called `useParams`to get the id from the URL so that we can pass it to our useProject hook.
     const { id } = useParams();
-    // useProject returns three pieces of info, so we need to grab them all here
     const { project, isLoading, error } = useProject(id);
+    const { auth } = useAuth();
+    const projectLink = `/project/${id}/update`
+    const navigate = useNavigate();
 
     if (isLoading) {
         return (<p>loading...</p>)
@@ -18,48 +24,85 @@ function ProjectPage() {
         return (<p>Error is: {error.message}</p>)
     }
 
+    const handleDelete = () => {
+        if (window.confirm("Are you sure you want to delete this project?")) {
+            deleteProject(id)
+            .then(() => {
+                navigate('/')
+            })
+            .catch((error) => {
+                console.error("Error deleting project:", error)
+            });
+        }
+    };
+
+    const formattedDate = new Date(project.date_created).toLocaleDateString('en-AU', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+
     const totalPledgeAmount = project.pledges.reduce((total, pledgeData) => {
         return total + pledgeData.amount;
     }, 0);
-
     const numberOfPledges = project.pledges.length;
+    const goal = typeof project.goal === 'number' ? project.goal : 0;
+    const fundingProgress = goal !== 0 ? (totalPledgeAmount / goal) * 100 : 0;
 
-    // Calculate the percentage of funding progress
-    const fundingProgress = (project.total_amount / project.goal) * 100;
+    const pledgeAmountCounts = {};
+    project.pledges.forEach((pledgeData) => {
+        const amount = pledgeData.amount;
+        if (pledgeAmountCounts[amount]) {
+            pledgeAmountCounts[amount]++;
+        } else {
+            pledgeAmountCounts[amount] = 1;
+        }
+    });
 
     return (
         <section className="project-section" >
             <h1>{project.title}</h1>
+            <h3>{formattedDate}</h3>
             <img src={project.image} alt="" />
             <div className="project-container">
-                <h2>${totalPledgeAmount} raised of ${project.goal} target</h2>
-                <div className="progress-container">
-                    <div className="progress-bar">
-                        <div className="progress" style={{ width: `${fundingProgress}%` }}></div>
+                <div className="project-progress-bar">
+                    <h2>${totalPledgeAmount} raised of ${project.goal} target</h2>
+                    <div className="progress-container">
+                        <div className="progress-bar">
+                            <div className="progress" style={{ width: `${fundingProgress}%` }}></div>
+                        </div>
                     </div>
-                </div>
-                <div className="data-container">
-                    <h3>{numberOfPledges} pledges</h3>
-                    <h3>Created at: {project.date_created}</h3>
-                    <h3>{`Status: ${project.is_open}`}</h3>
                 </div>
                 <div className="pledge-section">
                     <h3>Pledge now:</h3>
-                    <ul>
-                        {project.pledges.map((pledgeData, index) => {
-                            return (
-                                <li key={index}>
-                                    {pledgeData.amount} from {pledgeData.supporter}
-                                </li>
-                            );
-                        })}
-                    </ul>
                     {/* Render the CreatePledge component */}
                     <CreatePledge projectId={id} />
+                    <div className="button">
+                        {auth.id === project.owner && (
+                            <div>
+                                <Link to={projectLink}>
+                                    <button>Update Project</button>
+                                </Link>
+                                <button onClick={handleDelete} className="delete-button">
+                                    Delete Project
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
-            <p className="project-description">{project.description}</p>
+            <div className="project-description-container">
+                <p className="project-description">{project.description}</p>
+            </div>
             {/* <ProjectComments comments={project.comments} /> */}
+            <div className="data-container">
+                <h3>{numberOfPledges} Pledges</h3>
+                <div className="data-container-pledges">
+                    {Object.entries(pledgeAmountCounts).map(([amount, count]) => (
+                        <p key={amount}>{`$${amount} from ${count}`}</p>
+                    ))}
+                </div>
+            </div>
         </section>
     );
 }
