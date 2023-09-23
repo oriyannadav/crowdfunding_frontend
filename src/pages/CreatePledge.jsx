@@ -52,6 +52,7 @@ function CreatePledge(props) {
                 type="text" 
                 id="amount" 
                 placeholder='Enter the amount'
+                required
                 onChange={handleChange}
                 />
             </div>
@@ -61,10 +62,11 @@ function CreatePledge(props) {
                 type="text" 
                 id="comment" 
                 placeholder='Enter a comment'
+                required
                 onChange={handleChange} 
                 />
             </div>
-            <div className="pledge-input-container-anonymous">
+            <div className="pledge-input-container pledge-input-container-anonymous">
                 <label htmlFor='anonymous'>Anonymous Pledge</label>
                 <input
                 type='checkbox'
