@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef} from 'react'
 
 import { Autoplay, EffectCoverflow, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,10 +8,11 @@ import 'swiper/css/parallax';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import "./HomePage.css";
+
 
 import useProjects from "../hooks/use-projects";
 import ProjectCard from "../components/ProjectCard";
-import "./HomePage.css";
 
 
 function HomePage() {
@@ -43,11 +44,13 @@ function HomePage() {
                     modules = {[EffectCoverflow, Autoplay, Pagination, Navigation]}
                     coverflowEffect={
                         {
-                            depth:500,
-                            rotate: 50,
-                            stretch: 0,
-                            modifier: 1,
+                            depth:300,
+                            loop: true,
+                            rotate: 10,
+                            stretch: 1,
+                            modifier:0.5,
                             slideShadows: true,
+                            // initialSlide: 1,
                         }
                     }
                     autoplay={{
@@ -60,11 +63,12 @@ function HomePage() {
                             dynamicBullets: true,
                         }
                     }
+                    initialSlide= {3}
                     centeredSlides={true}
                     effect='coverflow'
                     grabCursor={true}
                     // navigation={true}
-                    slidesPerView={3}
+                    slidesPerView={5}
                     className="mySwiper"
                     spaceBetween={20}
                     onAutoplayTimeLeft={onAutoplayTimeLeft}
