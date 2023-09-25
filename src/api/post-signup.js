@@ -25,15 +25,6 @@ async function postSignUp(first_name, last_name, email, username, password) {
             const errorMessage = data?.detail?? fallbackError;
             throw new Error(errorMessage);
     }
-
-    // let signupResponse = await response.json()
-
-    // postLogin(
-    //     username,
-    //     password
-    // ).then((res) => {
-    //     signupResponse.token = res.token
-    // })
     
     return await response.json();
 }
