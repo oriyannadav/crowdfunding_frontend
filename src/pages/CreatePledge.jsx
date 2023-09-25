@@ -3,15 +3,22 @@ import { useNavigate } from 'react-router-dom'
 
 import postPledge from '../api/postPledge';
 
+import useAuth from "../hooks/use-auth";
+
 function CreatePledge(props) {
-    const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(false)
+    const navigate = useNavigate();
+
+    const { auth } = useAuth();
+
+    const [pledgeError, setPledgeError] = useState("");
+    
+    const [isLoading, setIsLoading] = useState(false);
     const [pledgeData, setPledgeData] = useState({
         project: props.projectId,
         amount: 0,
         comment: '',
         anonymous: false
-    })
+    });
 
     const handleChange = (event) => {
         setPledgeData({
@@ -30,6 +37,12 @@ function CreatePledge(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
         setIsLoading(true)
+
+        if (!auth.token) {
+            setPledgeError("You must be logged in to make a pledge.");
+            setIsLoading(false);
+            return;
+        }
 
         postPledge(pledgeData)
         .then(() => {
@@ -74,6 +87,9 @@ function CreatePledge(props) {
                 onChange={handleChecked}
                 />
             </div>
+
+            {pledgeError && <p className="error-message">{pledgeError}</p>}
+
             <button type="submit" value="Pledge">
                 Pledge
             </button>
