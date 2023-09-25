@@ -6,14 +6,15 @@ import useAuth from "../hooks/use-auth";
 import deleteProject from "../api/delete-project";
 
 import CreatePledge from "./CreatePledge.jsx";
-// import ProjectComments from "../components/Comments";
 import "./ProjectPage.css";
 
 function ProjectPage() {
     const { id } = useParams();
-    const { project, isLoading, error } = useProject(id);
     const { auth } = useAuth();
-    const projectLink = `/project/${id}/update`
+
+    const { project, isLoading, error } = useProject(id);
+    const projectLink = `/project/${id}/update`;
+
     const navigate = useNavigate();
 
     if (isLoading) {
@@ -79,14 +80,24 @@ function ProjectPage() {
                     <CreatePledge projectId={id} />
                     <div className="button">
                         {auth.id === project.owner && (
-                            <div>
-                                <Link to={projectLink}>
-                                    <button>Update Project</button>
-                                </Link>
-                                <button onClick={handleDelete} className="delete-button">
-                                    Delete Project
-                                </button>
-                            </div>
+                            <>
+                                <div>
+                                    <Link to={projectLink}>
+                                        <button>Update Project</button>
+                                    </Link>
+                                    <button onClick={handleDelete} className="delete-button">
+                                        Delete Project
+                                    </button>
+                                </div>
+                                <div className="data-container">
+                                    <h3>{numberOfPledges} Pledges</h3>
+                                    <div className="data-container-pledges">
+                                        {Object.entries(pledgeAmountCounts).map(([amount, count]) => (
+                                            <p key={amount}>{`$${amount} from ${count}`}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                            </>
                         )}
                     </div>
                 </div>
@@ -94,14 +105,21 @@ function ProjectPage() {
             <div className="project-description-container">
                 <p className="project-description">{project.description}</p>
             </div>
-            {/* <ProjectComments comments={project.comments} /> */}
-            <div className="data-container">
-                <h3>{numberOfPledges} Pledges</h3>
-                <div className="data-container-pledges">
-                    {Object.entries(pledgeAmountCounts).map(([amount, count]) => (
-                        <p key={amount}>{`$${amount} from ${count}`}</p>
-                    ))}
-                </div>
+            <div className="pledge-comments">
+                {project.pledges.length === 0 ? (
+                    <p>No pledges were made.</p>
+                ) : (
+                    <>
+                        <h3>Recent Pledges:</h3>
+                        {project.pledges.map((pledge, index) => (
+                            <div key={index} className="pledge-comment">
+                                <h4>Pledge {index + 1}</h4>
+                                <p>Amount: ${pledge.amount}</p>
+                                <p>Comment: {pledge.comment}</p>
+                            </div>
+                        ))}
+                    </>
+                )}
             </div>
         </section>
     );

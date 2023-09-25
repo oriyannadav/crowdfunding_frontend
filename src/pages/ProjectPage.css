@@ -116,15 +116,15 @@ p.project-description {
 
 .data-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 17%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .data-container h3 {
     font-size: 2rem;
     font-weight: 400;
-    padding: 5px 0px;
+    /* padding: 5px 0px; */
 }
 
 .data-container-pledges {
@@ -191,4 +191,18 @@ button:active {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.pledge-comment {
+    padding: 10px 0;
+}
+
+.pledge-comments h4 {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.pledge-comments p {
+    font-size: 1.4rem;
+    font-weight: 5100;
 }
