@@ -45,7 +45,7 @@ html {
 	border-radius: 10px;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
 			0 10px 10px rgba(0,0,0,0.22);
-	width: 110vh;
+	width: 60vw;
 	min-height: 60vh;
     margin: 50px;
     display: flex;
@@ -120,4 +120,67 @@ html {
 
 .project-card {
     text-align: center;
+}
+
+@media (max-width: 1500px) {
+    .profile-section {
+        width: 70vw;
+    }
+}
+
+@media (max-width: 1350px) {
+    .profile-section {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .profile-icon {
+        width: 45px;
+        margin-right: 10px;
+    }
+
+    .profile-page h1 {
+        font-size: 4.5rem;
+    }
+
+    .profile-container {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .profile-data-second {
+        margin-left: 00px;
+    }
+}
+
+@media (max-width: 550px) {
+    .profile-icon {
+        width: 35px;
+    }
+
+    .profile-page h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .profile-section {
+        width: 70vw;
+    }
+
+    .project-card {
+        width: 250px;
+    }
+
+    .project-card img {
+        width: 250px;
+    }
+}
+
+@media (max-width: 450px) {
+    .profile-section {
+        width: 80vw;
+    }
 }

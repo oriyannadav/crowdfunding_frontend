@@ -28,7 +28,9 @@ html {
 }
 
 .create-project-page {
-    margin: 0px 392px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .create-project-form {
@@ -59,16 +61,18 @@ html {
 }
 
 .create-project-container {
-	margin-top: 100px;
-	background-color: #fff;
-	border-radius: 10px;
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 860px;
-	max-width: 100%;
-	min-height: 620px;
+    margin-top: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    position: relative;
+    overflow: hidden;
+    width: 1100px;
+    max-width: 100%;
+    min-height: 690px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .create-project-form input, .create-project-form textarea {
@@ -78,4 +82,91 @@ html {
     border-radius: 5px;
 	padding: 14px 12px;
 	margin: 8px 0;
+}
+
+/* responsiveness */
+
+@media (max-width: 1200px) {
+    .create-project-container {
+        width: 1000px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .create-project-container {
+        width: 900px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .create-project-container {
+        width: 800px;
+    }
+}
+
+@media (max-width: 900px) {
+    .create-project-container {
+        width: 700px;
+    }
+}
+
+@media (max-width: 750px) {
+    .create-project-container {
+        width: 600px;
+    }
+
+    .create-project-page form {
+        width: 500px;
+    }
+}
+
+@media (max-width: 650px) {
+    .create-project-page h1 {
+        font-size: 4rem;
+        padding: 20px 0px 30px 0px;
+    }
+
+    .create-project-container {
+        width: 500px;
+    }
+
+    .create-project-page form {
+        width: 450px;
+    }
+
+    .create-project-page .inline-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 550px) {
+    .create-project-page h1 {
+        font-size: 3rem;
+        padding: 20px 0px 30px 0px;
+    }
+
+    .create-project-container {
+        width: 400px;
+    }
+
+    .create-project-page form {
+        width: 350px;
+    }
+}
+
+@media (max-width: 450px) {
+    .create-project-page h1 {
+        font-size: 3rem;
+        padding: 20px 0px 30px 0px;
+    }
+
+    .create-project-container {
+        width: 300px;
+    }
+
+    .create-project-page form {
+        width: 250px;
+    }
 }

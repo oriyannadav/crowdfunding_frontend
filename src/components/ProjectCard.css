@@ -30,11 +30,12 @@ html {
     background-color: var(--bg-color);
     border-radius: 10px;
     height: 420px;
+    width: 320px;
 }
 
 .project-card img {
     object-fit: cover;
-    width: 300px;
+    width: 320px;
     height: 280px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;

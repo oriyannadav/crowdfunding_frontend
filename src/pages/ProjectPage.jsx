@@ -64,62 +64,66 @@ function ProjectPage() {
         <section className="project-section" >
             <h1>{project.title}</h1>
             <h3>{formattedDate}</h3>
-            <img src={project.image} alt="" />
-            <div className="project-container">
-                <div className="project-progress-bar">
-                    <h2>${totalPledgeAmount} raised of ${project.goal} target</h2>
-                    <div className="progress-container">
-                        <div className="progress-bar">
-                            <div className="progress" style={{ width: `${fundingProgress}%` }}></div>
+            <div className="project-section-container">
+                <img src={project.image} alt="" />
+                <div className="project-container">
+                    <div className="project-progress-bar">
+                        <h2>${totalPledgeAmount} raised of ${project.goal} target</h2>
+                        <div className="progress-container">
+                            <div className="progress-bar">
+                                <div className="progress" style={{ width: `${fundingProgress}%` }}></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="pledge-section">
+                        <h3>Pledge now:</h3>
+                        {/* Render the CreatePledge component */}
+                        <CreatePledge projectId={id} />
+                        <div className="button">
+                            {auth.id === project.owner && (
+                                <>
+                                    <div>
+                                        <Link to={projectLink}>
+                                            <button>Update Project</button>
+                                        </Link>
+                                        <button onClick={handleDelete} className="delete-button">
+                                            Delete Project
+                                        </button>
+                                    </div>
+                                    <div className="data-container">
+                                        <h3>{numberOfPledges} Pledges</h3>
+                                        <div className="data-container-pledges">
+                                            {Object.entries(pledgeAmountCounts).map(([amount, count]) => (
+                                                <p key={amount}>{`$${amount} from ${count}`}</p>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
-                <div className="pledge-section">
-                    <h3>Pledge now:</h3>
-                    {/* Render the CreatePledge component */}
-                    <CreatePledge projectId={id} />
-                    <div className="button">
-                        {auth.id === project.owner && (
-                            <>
-                                <div>
-                                    <Link to={projectLink}>
-                                        <button>Update Project</button>
-                                    </Link>
-                                    <button onClick={handleDelete} className="delete-button">
-                                        Delete Project
-                                    </button>
-                                </div>
-                                <div className="data-container">
-                                    <h3>{numberOfPledges} Pledges</h3>
-                                    <div className="data-container-pledges">
-                                        {Object.entries(pledgeAmountCounts).map(([amount, count]) => (
-                                            <p key={amount}>{`$${amount} from ${count}`}</p>
-                                        ))}
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                    </div>
+            </div>
+            <div className="project-bottom-section">
+                <div className="project-description-container">
+                    <p className="project-description">{project.description}</p>
                 </div>
-            </div>
-            <div className="project-description-container">
-                <p className="project-description">{project.description}</p>
-            </div>
-            <div className="pledge-comments">
-                {project.pledges.length === 0 ? (
-                    <p>No pledges were made.</p>
-                ) : (
-                    <>
-                        <h3>Recent Pledges:</h3>
-                        {project.pledges.map((pledge, index) => (
-                            <div key={index} className="pledge-comment">
-                                <h4>Pledge {index + 1}</h4>
-                                <p>Amount: ${pledge.amount}</p>
-                                <p>Comment: {pledge.comment}</p>
-                            </div>
-                        ))}
-                    </>
-                )}
+                <div className="pledge-comments">
+                    {project.pledges.length === 0 ? (
+                        <p>No pledges were made.</p>
+                    ) : (
+                        <>
+                            <h3>Recent Pledges:</h3>
+                            {project.pledges.map((pledge, index) => (
+                                <div key={index} className="pledge-comment">
+                                    <h4>Pledge {index + 1}</h4>
+                                    <p>Amount: ${pledge.amount}</p>
+                                    <p>Comment: {pledge.comment}</p>
+                                </div>
+                            ))}
+                        </>
+                    )}
+                </div>
             </div>
         </section>
     );

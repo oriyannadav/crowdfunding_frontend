@@ -31,6 +31,11 @@ html {
     margin: 125px 200px;
 }
 
+.project-section-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .project-section h1 {
     font-family: 'Yeseva One', cursive;
     font-size: 5rem;
@@ -52,9 +57,9 @@ html {
 }
 
 .project-section img {
-    height: 60vh;
+    height: 75vh;
     object-fit: cover;
-    width: 49vw;
+    width: 50vw;
     border-radius: 15px;
 }
 
@@ -67,15 +72,15 @@ html {
 }
 
 .project-description-container {
-    /* Existing styles for the project container */
     display: flex;
     flex-direction: column;
-    width: 66%; /* Make the description span the same width as the image */
 }
 
 p.project-description {
     padding: 30px 0px;
     font-size: 1.8rem;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .project-container {
@@ -83,13 +88,9 @@ p.project-description {
 	border-radius: 10px;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
 			0 10px 10px rgba(0,0,0,0.22);
-	position: absolute;
 	width: 360px;
 	max-width: 100%;
 	min-height: 555px;
-    right: 0;
-    top: 0;
-    margin: 248px 200px 0px 0px;
 }
 
 .progress-container {
@@ -191,6 +192,7 @@ button:active {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 200px;
 }
 
 .pledge-comment {
@@ -205,4 +207,120 @@ button:active {
 .pledge-comments p {
     font-size: 1.4rem;
     font-weight: 5100;
+}
+/* responsiveness */
+
+@media (max-width: 1550px) {
+    .project-section {
+        margin: 125px 175px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .project-section {
+        margin: 125px 150px;
+    }
+}
+
+@media (max-width: 1450px) {
+    .project-section {
+        margin: 125px 125px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .project-section {
+        margin: 125px 100px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .project-section {
+        margin: 125px 85px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .project-section {
+        margin: 125px 65px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .project-section {
+        margin: 125px 40px;
+    }
+
+    .project-description-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .project-section {
+        margin: 125px 20px;
+    }
+}
+
+@media (max-width: 850px) {
+    .project-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-section-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+        width: 600px;
+    }
+
+    .project-section img {
+        height: 65vh;
+        width: 74vw;
+        margin-top: 40px;
+    }
+
+    .project-container {
+        height: 65vh;
+        width: 74vw;
+        max-width: 100%;
+        min-height: 555px;
+    }
+
+    .project-section input {
+        width: 200px;
+    }
+
+    .pledge-input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 400px;
+        padding: 5px 0px;
+    }
+
+    .pledge-input-container-anonymous {
+        width: 200px;
+    }
+
+    .pledge-input-container-anonymous input {
+        width: 13px;
+        display: flex;
+        flex-direction: row;
+        padding: 5px 0px;
+    }
+}
+
+@media (max-width: 500px) {
+    .project-section-container {
+        width: 400px;
+    }
+
+    .project-section h1 {
+        font-family: 'Yeseva One', cursive;
+        font-size: 3.5rem;
+        padding-bottom: 20px;
+    }
 }

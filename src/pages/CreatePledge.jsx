@@ -79,7 +79,7 @@ function CreatePledge(props) {
                 onChange={handleChange} 
                 />
             </div>
-            <div className="pledge-input-container pledge-input-container-anonymous">
+            <div className="pledge-input-container-anonymous">
                 <label htmlFor='anonymous'>Anonymous Pledge</label>
                 <input
                 type='checkbox'
