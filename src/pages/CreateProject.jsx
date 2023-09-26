@@ -3,11 +3,18 @@ import { useNavigate } from 'react-router-dom'
 
 import postProject from "../api/post-project"
 
-import "./CreateProject.css"
+import "./CreateProject.css";
+
+import axios from 'axios';
 
 function CreateProject() {
-    const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(false)
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+
+    const cloudName = 'ds1w5th9i';
+    const uploadPreset = 'schoolr_upload_present';
+
+    const uploadUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
     const [projectData, setProjectData] = useState({
         title: "",
@@ -42,6 +49,33 @@ function CreateProject() {
     //     }
     // };
 
+    const handleImageChange = async (event) => {
+        const file = event.target.files[0];
+    
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', uploadPreset);
+    
+            try {
+                const response = await axios.post(uploadUrl, formData);
+                const imageUrl = response.data.secure_url;
+    
+                // Update the projectData with the uploaded image URL
+                setProjectData({
+                    ...projectData,
+                    image: imageUrl,
+                });
+    
+                // You can save the `imageUrl` or use it as needed.
+                console.log('Image uploaded successfully:', imageUrl);
+            } catch (error) {
+                console.error('Error uploading image:', error);
+            }
+        }
+    };
+    
+
     const handleSubmit = (event) => {
         event.preventDefault()
         setIsLoading(true)
@@ -73,6 +107,7 @@ function CreateProject() {
                                 id="title" 
                                 placeholder='Title'
                                 onChange={handleChange}
+                                required
                                 />
                             </div>
                             <div className="inline-container">
@@ -83,22 +118,27 @@ function CreateProject() {
                                     id='goal'
                                     placeholder='Goal'
                                     onChange={handleChange}
+                                    required
                                     />
                                 </div>
                                 <div className="create-project-input-container">
                                     <label htmlFor='image'>Upload an image</label>
-                                    {/* <input
+                                    <input
                                     type='file'
                                     id='image'
                                     placeholder='image/*'
                                     onChange={handleImageChange}
-                                    /> */}
-                                    <input
+                                    required
+                                    />
+                                    {/* <input
                                     type='text'
                                     id='image'
                                     placeholder='Image URL'
                                     onChange={handleChange}
-                                    />
+                                    /> */}
+                                    {projectData.image && (
+                                        <img src={projectData.image} alt="Uploaded" width="150" />
+                                    )}
                                 </div>
                             </div>
                             <div className="create-project-input-container">
@@ -109,6 +149,7 @@ function CreateProject() {
                                 onChange={handleChange} 
                                 cols="60" 
                                 rows="5"
+                                required
                                 />
                             </div>
                             <button type="submit" value="Project">

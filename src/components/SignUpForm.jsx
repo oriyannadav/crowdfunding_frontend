@@ -99,6 +99,7 @@ function SignUpForm() {
                         id = "first_name"
                         placeholder = "Enter first name"
                         onChange = {handleChange}
+                        required
                     />
                 </div>
                 <div className="input-container">
@@ -108,6 +109,7 @@ function SignUpForm() {
                         id = "last_name"
                         placeholder = "Enter last name"
                         onChange = {handleChange}
+                        required
                     />
                 </div>
             </div>
@@ -119,6 +121,7 @@ function SignUpForm() {
                         id = "email"
                         placeholder = "Enter email"
                         onChange = {handleChange}
+                        required
                     />
                 </div>
                 <div className="input-container">
@@ -128,6 +131,7 @@ function SignUpForm() {
                         id = "username"
                         placeholder = "Enter username"
                         onChange = {handleChange}
+                        required
                     />
                 </div>
             </div>
@@ -139,6 +143,7 @@ function SignUpForm() {
                         id = "password"
                         placeholder = "Password"
                         onChange = {handleChange}
+                        required
                     />
                 </div>
                 <div className="input-container">
@@ -148,6 +153,7 @@ function SignUpForm() {
                         id="confirmPassword"
                         placeholder="Confirm Password"
                         onChange={handleChange}
+                        required
                         />
                 </div>
             </div>

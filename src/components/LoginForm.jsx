@@ -62,6 +62,7 @@ function LoginForm() {
                     id = "username"
                     placeholder = "Enter username"
                     onChange = {handleChange}
+                    required
                 />
             </div>
             <div>
@@ -71,6 +72,7 @@ function LoginForm() {
                     id = "password"
                     placeholder = "Password"
                     onChange = {handleChange}
+                    required
                 />
             </div>
             <button type = "submit" onClick = {handleSubmit}>
