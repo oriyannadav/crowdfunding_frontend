@@ -72,7 +72,7 @@ function HomePage() {
                     // navigation={true}
                     slidesPerView={5}
                     className="mySwiper"
-                    spaceBetween={20}
+                    spaceBetween={25}
                     onAutoplayTimeLeft={onAutoplayTimeLeft}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}

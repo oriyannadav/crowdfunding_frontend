@@ -34,6 +34,7 @@ section.section {
 .overlay-home {
     position: absolute;
     background: rgba(57, 57, 57, 0.3);
+    height: 91.55vh;
     top: 70px;
     right: 0;
     left: 0;
@@ -162,4 +163,71 @@ section.section {
 
 .footer-text p {
     font-size: 1.8rem;
+}
+
+/* responsiveness */
+
+@media (max-width: 1400px) {
+    .bottom-section-image img {
+        height: 450px;
+        margin-right: 100px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .bottom-section-image img {
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .bottom-section-image img {
+        height: 400px;
+        margin-right: 0px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .bottom-section-image img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 700px) {
+    .bottom-section-writing {
+        padding-left: 0rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .bottom-section-image img {
+        height: 200px;
+    }
+
+    .bottom-section-writing h3 {
+        font-size: 1.8rem;
+    }
+
+    .footer-text {
+        height: 10rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .bottom-section {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .bottom-section-writing-inside {
+        padding-top: 20px;
+    }
+
+    .bottom-section-image img {
+        margin-bottom:20px;
+    }
+
+    .footer-text p {
+        font-size: 1.4rem;
+    }
 }
