@@ -1,9 +1,16 @@
 import { Link, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 import useAuth from "../hooks/use-auth.js";
+
 import "./NavBar.css";
 
 function NavBar() {
     const {auth, setAuth} = useAuth();
+
+    const [activeLink, setActiveLink] = useState("");
+
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const handleLogout = () => {
         window.localStorage.removeItem("token");
@@ -13,9 +20,26 @@ function NavBar() {
         });
     };
 
-    const toggleMenu = (event) => {
-        event.target.classList.add('open')
-    }
+    const setActive = (link) => {
+        setActiveLink(link);
+    };
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+    useEffect(() => {
+        const navbar = document.querySelector('.navbar');
+        const mobileNavbar = document.querySelector('#navbar');
+
+        if (menuOpen) {
+            navbar.classList.add('active');
+            mobileNavbar.classList.add('active');
+        } else {
+            navbar.classList.remove('active');
+            mobileNavbar.classList.remove('active');
+        }
+    }, [menuOpen]);
 
     return (
         <div>
@@ -23,21 +47,49 @@ function NavBar() {
                 <header className="header">
                     <Link to="/" className="logo"><img src="../../schoolr1.png" alt="" /></Link>
                     <div className="menu-btn" onClick={toggleMenu}>
-                        <div className="menu-burger"></div>
+                        <div className={`menu-burger ${menuOpen ? 'open' : ''}`}></div>
                     </div>
                     <nav className="navbar flex-nav" id="navbar">
-                        <Link to="/">Home</Link>
+                        <Link 
+                        to="/" 
+                        className={activeLink === "home" ? "active" : ""}
+                        id="home"
+                        onClick={() => setActive("home")}
+                        >
+                            Home
+                        </Link>
                         {auth.token ? (
                             <>
                             <Link to="/" onClick={handleLogout}>
                                 Log Out
                             </Link>
-                            <Link to="/profile">Profile</Link>
+                            <Link 
+                            to="/profile" 
+                            id="profile"
+                            className={activeLink === "profile" ? "active" : ""}
+                            onClick={() => setActive("profile")}
+                            >
+                                Profile
+                            </Link>
                             </>
                         ) : (
                             <>
-                            <Link to="/login">Log In</Link>
-                            <Link to="/signup">Sign Up</Link>
+                            <Link 
+                            to="/login"
+                            id="login"
+                            className={activeLink === "login" ? "active" : ""}
+                            onClick={() => setActive("login")}
+                            >
+                                Log In
+                            </Link>
+                            <Link 
+                            to="/signup" 
+                            id="signup"
+                            className={activeLink === "signup" ? "active" : ""}
+                            onClick={() => setActive("signup")}
+                            >
+                                Sign Up
+                            </Link>
                             </>
                         )}
                     </nav>
