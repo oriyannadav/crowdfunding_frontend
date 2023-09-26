@@ -45,7 +45,7 @@ section.section {
 
 .welcome img.header-image {
     margin-top: 70px;
-    height: 90.7vh;
+    height: 91.55vh;
     object-fit: cover;
     width: 100vw;
 }
@@ -115,4 +115,51 @@ section.section {
     stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
     stroke-dasharray: 125.6;
     transform: rotate(-90deg);
+}
+
+.bottom-section {
+    display: flex;
+}
+
+.bottom-section-writing {
+    align-items: center;
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 6.25rem;
+}
+
+.bottom-section-writing-inside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom-section-writing h3 {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.bottom-section-image {
+    align-items: center;
+    display: flex;
+    flex: 1 1;
+    justify-content: center;
+} 
+
+.bottom-section-image img {
+    height: 500px;
+    margin-right: 150px;
+}
+
+.footer-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6rem;
+}
+
+.footer-text p {
+    font-size: 1.8rem;
 }

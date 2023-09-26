@@ -1,4 +1,5 @@
 import { useRef} from 'react'
+import { Link } from "react-router-dom";
 
 import { Autoplay, EffectCoverflow, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -19,10 +20,10 @@ function HomePage() {
     const { projects, isLoading, error } = useProjects();
 
     const progressCircle = useRef(null);
-    const progressContent = useRef(null);
+    // const progressContent = useRef(null);
     const onAutoplayTimeLeft = (s, time, progress) => {
         progressCircle.current.style.setProperty('--progress', 1 - progress);
-        progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+        // progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
 
     if (isLoading) {
@@ -54,8 +55,9 @@ function HomePage() {
                         }
                     }
                     autoplay={{
-                        delay: 3500,
+                        delay: 3000,
                         disableOnInteraction: false,
+                        reverseDirection: false,
                     }}
                     pagination={
                         {
@@ -89,9 +91,35 @@ function HomePage() {
                         <svg viewBox="0 0 48 48" ref={progressCircle}>
                             <circle cx="24" cy="24" r="20"></circle>
                         </svg>
-                        <span ref={progressContent}></span>
+                        {/* <span ref={progressContent}></span> */}
                     </div>
                 </Swiper>
+            </div>
+            <div className='bottom-section'>
+                <div className="bottom-section-writing">
+                    <div className="bottom-section-writing-inside">
+                        <h3>Ready to get started?</h3>
+                        <Link to="/signup">
+                            <button>
+                                Sign Up Now
+                            </button>
+                        </Link>
+                    </div>
+                    <div className="bottom-section-writing-inside">
+                        <h3>Already a memeber?</h3>
+                        <Link to="/login">
+                            <button>
+                                Log In Now
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+                <div className="bottom-section-image">
+                    <img src="/heart3.png" alt="" />
+                </div>
+            </div>
+            <div className="footer-text">
+                <p>&copy; 2023 Schoolr</p>
             </div>
         </section>
     );
