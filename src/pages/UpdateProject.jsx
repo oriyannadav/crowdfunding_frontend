@@ -5,12 +5,19 @@ import putProject from "../api/put-project"
 
 import useProject from "../hooks/use-project";
 
-import "./CreateProject.css"
+import "./CreateProject.css";
+
+import axios from 'axios';
 
 function UpdateProject() {
     const { id } = useParams();
-    const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(false)
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+
+    const cloudName = 'ds1w5th9i';
+    const uploadPreset = 'schoolr_upload_present';
+
+    const uploadUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
     const { project, error } = useProject(id);
 
@@ -19,7 +26,7 @@ function UpdateProject() {
         description: "",
         goal: 0,
         image: null,
-    })
+    });
 
     useEffect(() => {
         if (project) {
@@ -37,22 +44,29 @@ function UpdateProject() {
         })
     }
 
-    const handleImageChange = (event) => {
-        const selectedFile = event.target.files[0];
+    const handleImageChange = async (event) => {
+        const file = event.target.files[0];
     
-        if (selectedFile) {
-            const reader = new FileReader();
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', uploadPreset);
     
-            reader.onload = (e) => {
-                const imageUrl = e.target.result;
+            try {
+                const response = await axios.post(uploadUrl, formData);
+                const imageUrl = response.data.secure_url;
     
+                // Update the projectData with the uploaded image URL
                 setProjectData({
-                ...projectData,
-                image: imageUrl,
+                    ...projectData,
+                    image: imageUrl,
                 });
-            };
     
-            reader.readAsDataURL(selectedFile);
+                // You can save the `imageUrl` or use it as needed.
+                console.log('Image uploaded successfully:', imageUrl);
+            } catch (error) {
+                console.error('Error uploading image:', error);
+            }
         }
     };
 
@@ -62,7 +76,7 @@ function UpdateProject() {
 
         putProject(projectData, id)
         .then(() => {
-            navigate('/')
+            navigate('/profile')
         })
         .catch(() => {
             setIsLoading(false)
@@ -92,6 +106,7 @@ function UpdateProject() {
                                 placeholder='Title'
                                 onChange={handleChange}
                                 value={projectData.title}
+                                required
                                 />
                             </div>
                             <div className="inline-container">
@@ -103,6 +118,7 @@ function UpdateProject() {
                                     placeholder='Goal'
                                     onChange={handleChange}
                                     value={projectData.goal}
+                                    required
                                     />
                                 </div>
                                 <div className="create-project-input-container">
@@ -112,6 +128,7 @@ function UpdateProject() {
                                     id='image'
                                     placeholder='image/*'
                                     onChange={handleImageChange}
+                                    required
                                     />
                                 </div>
                             </div>
@@ -130,6 +147,7 @@ function UpdateProject() {
                                 value={projectData.description}
                                 cols="60" 
                                 rows="5"
+                                required
                                 />
                             </div>
                             <button type="submit" value="Project">
