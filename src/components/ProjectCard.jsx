@@ -10,7 +10,11 @@ function ProjectCard(props) {
         <div className="project-card">
             <Link to={projectLink}>
                 <img src={projectData.image} />
-                <h3>{projectData.title}</h3>
+                <div className="description">
+                    <h3>{projectData.title}</h3>
+                    <p>Target is ${projectData.goal}</p>
+                    <p>{projectData.description}...</p>
+                </div>
             </Link>
         </div>
     );
