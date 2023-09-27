@@ -28,6 +28,10 @@ function NavBar() {
         setMenuOpen(!menuOpen);
     };
 
+    const handleLinkClick = () => {
+        setMenuOpen(false);
+    };
+
     useEffect(() => {
         const navbar = document.querySelector('.navbar');
         const mobileNavbar = document.querySelector('#navbar');
@@ -54,7 +58,10 @@ function NavBar() {
                         to="/" 
                         className={activeLink === "home" ? "active" : ""}
                         id="home"
-                        onClick={() => setActive("home")}
+                        onClick={() => {
+                            setActive("home");
+                            handleLinkClick();
+                        }}
                         >
                             Home
                         </Link>
@@ -67,7 +74,10 @@ function NavBar() {
                             to="/profile" 
                             id="profile"
                             className={activeLink === "profile" ? "active" : ""}
-                            onClick={() => setActive("profile")}
+                            onClick={() => {
+                                setActive("profile");
+                                handleLinkClick();
+                            }}
                             >
                                 Profile
                             </Link>
@@ -78,7 +88,10 @@ function NavBar() {
                             to="/login"
                             id="login"
                             className={activeLink === "login" ? "active" : ""}
-                            onClick={() => setActive("login")}
+                            onClick={() => {
+                                setActive("login");
+                                handleLinkClick();
+                            }}
                             >
                                 Log In
                             </Link>
@@ -86,7 +99,10 @@ function NavBar() {
                             to="/signup" 
                             id="signup"
                             className={activeLink === "signup" ? "active" : ""}
-                            onClick={() => setActive("signup")}
+                            onClick={() => {
+                                setActive("signup");
+                                handleLinkClick();
+                            }}
                             >
                                 Sign Up
                             </Link>
