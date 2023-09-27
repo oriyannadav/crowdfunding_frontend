@@ -40,26 +40,7 @@ function SignUpForm() {
         }
     };
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     if (credentials.username && credentials.password) {
-    //         postSignUp(
-    //             credentials.first_name,
-    //             credentials.last_name,
-    //             credentials.email,
-    //             credentials.username,
-    //             credentials.password
-    //             ).then((response) => {
-    //             window.localStorage.setItem("token", response.token);
-    //             setAuth({
-    //                 token: response.token,
-    //             });
-    //             navigate("/login");
-    //         });
-    //     }
-    // };
-
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         if (credentials.password !== credentials.confirmPassword) {
@@ -72,20 +53,20 @@ function SignUpForm() {
             return;
         }
 
-        setError(null)
-
         if (credentials.username && credentials.password) {
-            try {
-                const response = await postSignUp(credentials);
-
+            postSignUp(
+                credentials.first_name,
+                credentials.last_name,
+                credentials.email,
+                credentials.username,
+                credentials.password
+                ).then((response) => {
                 window.localStorage.setItem("token", response.token);
                 setAuth({
                     token: response.token,
                 });
                 navigate("/login");
-            } catch (error) {
-                setError("Signup failed. Please try again."); // Handle API errors
-            }
+            });
         }
     };
 
