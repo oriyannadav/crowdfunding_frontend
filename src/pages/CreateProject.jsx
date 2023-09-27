@@ -21,6 +21,7 @@ function CreateProject() {
         description: "",
         goal: 0,
         image: null,
+        is_open: true,
     })
 
     const handleChange = (event) => {
@@ -130,12 +131,6 @@ function CreateProject() {
                                     onChange={handleImageChange}
                                     required
                                     />
-                                    {/* <input
-                                    type='text'
-                                    id='image'
-                                    placeholder='Image URL'
-                                    onChange={handleChange}
-                                    /> */}
                                     {projectData.image && (
                                         <img src={projectData.image} alt="Uploaded" width="150" />
                                     )}
@@ -159,7 +154,6 @@ function CreateProject() {
                     </div>
                 </div>
             </div>
-            
         </div>
     )
 }

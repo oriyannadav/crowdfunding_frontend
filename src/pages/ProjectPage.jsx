@@ -1,9 +1,11 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { useState } from 'react';
 
 import useProject from "../hooks/use-project";
 import useAuth from "../hooks/use-auth";
 
 import deleteProject from "../api/delete-project";
+import putProject from "../api/put-project";
 
 import CreatePledge from "./CreatePledge.jsx";
 import "./ProjectPage.css";
@@ -15,6 +17,8 @@ function ProjectPage() {
     const { project, isLoading, error } = useProject(id);
     const projectLink = `/project/${id}/update`;
 
+    const [isProjectOpen, setIsProjectOpen] = useState(project.is_open);
+
     const navigate = useNavigate();
 
     if (isLoading) {
@@ -25,11 +29,23 @@ function ProjectPage() {
         return (<p>Error is: {error.message}</p>)
     }
 
+    const handleOpenCloseClick = () => {
+        // Toggle the state when the button is clicked
+        const newIsProjectOpen = !isProjectOpen;
+        setIsProjectOpen(newIsProjectOpen);
+
+        // Update the backend with the new is_open value
+        putProject(id, { is_open: newIsProjectOpen })
+            .catch((error) => {
+                console.error('Error updating project:', error);
+            });
+    };
+
     const handleDelete = () => {
         if (window.confirm("Are you sure you want to delete this project?")) {
             deleteProject(id)
             .then(() => {
-                navigate('/')
+                navigate('/profile')
             })
             .catch((error) => {
                 console.error("Error deleting project:", error)
@@ -63,7 +79,7 @@ function ProjectPage() {
     return (
         <section className="project-section" >
             <h1>{project.title}</h1>
-            <h3>{formattedDate}</h3>
+            <h3>{formattedDate} &nbsp; · &nbsp; Project is currently {isProjectOpen ? 'open' : 'closed'} for pledges</h3>
             <div className="project-section-container">
                 <img src={project.image} alt="" />
                 <div className="project-container">
@@ -77,12 +93,14 @@ function ProjectPage() {
                     </div>
                     <div className="pledge-section">
                         <h3>Pledge now:</h3>
-                        {/* Render the CreatePledge component */}
                         <CreatePledge projectId={id} />
                         <div className="button">
                             {auth.id === project.owner && (
                                 <>
                                     <div>
+                                        <button onClick={handleOpenCloseClick}>
+                                            {isProjectOpen ? 'Open Project' :  'Close Project' }
+                                        </button>
                                         <Link to={projectLink}>
                                             <button>Update Project</button>
                                         </Link>
