@@ -43,15 +43,20 @@ function HomePage() {
             <div className="swiper-projects">
                 <Swiper
                     modules = {[EffectCoverflow, Autoplay, Pagination, Navigation]}
+                    effect={ 'coverflow' }
+                    grabCursor={ true }
+                    centeredSlides={ true }
+                    loop={ true }
+                    slidesPerView={ 'auto' }
+                    // navigation={true}
                     coverflowEffect={
                         {
-                            depth:300,
+                            depth: 100,
                             loop: true,
-                            rotate: 10,
-                            stretch: 1,
-                            modifier:0.5,
+                            rotate: 0,
+                            stretch: 0 ,
+                            modifier: 2.5,
                             slideShadows: true,
-                            // initialSlide: 1,
                         }
                     }
                     autoplay={{
@@ -65,14 +70,9 @@ function HomePage() {
                             dynamicBullets: true,
                         }
                     }
-                    initialSlide= {3}
-                    centeredSlides={true}
-                    effect='coverflow'
-                    grabCursor={true}
-                    // navigation={true}
-                    slidesPerView={5}
-                    className="mySwiper"
-                    spaceBetween={25}
+                    // initialSlide= {3}
+                    className={ "mySwiper" }
+                    // spaceBetween={25}
                     onAutoplayTimeLeft={onAutoplayTimeLeft}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
