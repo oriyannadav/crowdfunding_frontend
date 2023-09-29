@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import { Autoplay, EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import 'swiper/css';
-import 'swiper/swiper.css';
-import 'swiper/swiper-bundle.css';
-import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/css/parallax';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
+import 'swiper/css';
+import 'swiper/css/swiper.css';
 import "./HomePage.css";
 
 
