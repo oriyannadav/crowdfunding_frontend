@@ -1,6 +1,6 @@
-import SignUpForm from "../components/SignupForm";
+import SignUpForm from "../components/LoginForm";
 
-import "./SignUpPage.css"
+import "./SignUpPage.css";
 
 function SignUpPage() {
     return (
