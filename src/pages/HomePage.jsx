@@ -52,7 +52,6 @@ function HomePage() {
                     coverflowEffect={
                         {
                             depth: 100,
-                            loop: true,
                             rotate: 0,
                             stretch: 0 ,
                             modifier: 2.5,
@@ -70,7 +69,7 @@ function HomePage() {
                             dynamicBullets: true,
                         }
                     }
-                    // initialSlide= {3}
+                    initialSlide= { 3 }
                     className={ "mySwiper" }
                     // spaceBetween={25}
                     onAutoplayTimeLeft={onAutoplayTimeLeft}
