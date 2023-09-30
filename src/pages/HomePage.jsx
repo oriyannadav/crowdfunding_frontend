@@ -5,8 +5,7 @@ import { Autoplay, EffectCoverflow, Navigation, Pagination } from 'swiper/module
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import 'swiper/swiper.css';
-import 'swiper/css/parallax';
+import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 import "./HomePage.css";
@@ -43,34 +42,34 @@ function HomePage() {
             <div className="swiper-projects">
                 <Swiper
                     modules = {[EffectCoverflow, Autoplay, Pagination, Navigation]}
-                    effect={ 'coverflow' }
-                    grabCursor={ true }
-                    centeredSlides={ true }
-                    loop={ true }
-                    slidesPerView={ 'auto' }
-                    // navigation={true}
-                    coverflowEffect={
-                        {
-                            depth: 100,
-                            rotate: 0,
-                            stretch: 0 ,
-                            modifier: 2.5,
-                            slideShadows: true,
-                        }
-                    }
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    loop={true}
+                    slidesPerView={'auto'}
+                    coverflowEffect={{
+                        rotate: 0,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 2.5,
+                        slideShadows: true,
+                    }}
+                    pagination={{ 
+                        el: '.swiper-pagination', 
+                        clickable: true,
+                        dynamicBullets: true,
+                    }}
+                    navigation={{
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                        clickable: true,
+                    }}
                     autoplay={{
                         delay: 3000,
                         disableOnInteraction: false,
                         reverseDirection: false,
                     }}
-                    pagination={
-                        {
-                            clickable: true,
-                            dynamicBullets: true,
-                        }
-                    }
-                    className={ "mySwiper" }
-                    // spaceBetween={25}
+                    className={ 'swiper_container' }
                     onAutoplayTimeLeft={onAutoplayTimeLeft}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
@@ -84,12 +83,21 @@ function HomePage() {
                                 </SwiperSlide>
                             )
                     })}
+
+                    <div className="slider-controler">
+                        <div className="swiper-button-prev slider-arrow">
+                            <ion-icon name="arrow-back-outline"></ion-icon>
+                        </div>
+                        <div className="swiper-pagination"></div>
+                        <div className="swiper-button-next slider-arrow">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </div>
                     
                     <div className="autoplay-progress" slot="container-end">
                         <svg viewBox="0 0 48 48" ref={progressCircle}>
                             <circle cx="24" cy="24" r="20"></circle>
                         </svg>
-                        {/* <span ref={progressContent}></span> */}
                     </div>
                 </Swiper>
             </div>
