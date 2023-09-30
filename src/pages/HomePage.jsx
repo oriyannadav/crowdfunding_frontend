@@ -40,6 +40,7 @@ function HomePage() {
                 <div className="overlay-home"></div>
             </div>
             <div className="swiper-projects">
+                <h1>Recent Projects</h1>
                 <Swiper
                     modules = {[EffectCoverflow, Autoplay, Pagination, Navigation]}
                     effect={'coverflow'}
