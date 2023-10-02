@@ -252,17 +252,21 @@ section.section {
     .bottom-section-image img {
         height: 300px;
     }
-}
 
-@media (max-width: 700px) {
-    .bottom-section-writing {
-        padding-left: 0rem;
+    .swiper-projects h1 {
+        font-size: 4.5rem;
     }
 }
 
 @media (max-width: 780px) {
     .slider-controler .slider-arrow {
         display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .bottom-section-writing {
+        padding-left: 0rem;
     }
 }
 
@@ -296,5 +300,9 @@ section.section {
 
     .footer-text p {
         font-size: 1.4rem;
+    }
+
+    .swiper-projects h1 {
+        font-size: 3.5rem;
     }
 }
